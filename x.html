@@ -7,19 +7,22 @@
   </head>
   <body>
     <script>
-      async function getdata() {
-        // alert("yo");
-        
-        const response = await fetch("https://fakerapi.it/api/v1/persons");
-        console.log(response);
-        // console.log();
-        const data = await response.json();
-        console.log(data);
-
-        // document.getElementById("data2").innerHTML = JSON.stringify(data);
+      // document.getElementById("data2").innerHTML = JSON.stringify(data);
+      function getdata() {
+        const x = document.getElementById("o").value;
+        console.log(x);
+        const y = document.getElementById("t").value;
+        document.getElementById("para").innerHTML = parseInt(x) + parseInt(y);
       }
     </script>
+    <!-- <form> -->
+    <input type="number" id="o" />
+    <input type="number" id="t" />
     <button onclick="getdata()">Get data</button>
-    <div id="data2"></div>
+    <!-- </form> -->
+
+    <!-- <button onclick="getdata()">Get data</button> -->
+    <p id="para"></p>
+    <!-- <div id="data2"></div> -->
   </body>
 </html>
