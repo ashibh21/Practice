@@ -8,21 +8,33 @@
   <body>
     <script>
       // document.getElementById("data2").innerHTML = JSON.stringify(data);
-      function getdata() {
+      let time;
+      function debounce() {
+        clearTimeout(time);
+        time = setTimeout(() => {
+          getdata();
+        }, 10000);
+      }
+
+      async function getdata() {
+        debounce();
         const x = document.getElementById("o").value;
         console.log(x);
         const y = document.getElementById("t").value;
-        document.getElementById("para").innerHTML = parseInt(x) + parseInt(y);
+
+        const res = await fetch(
+          "https://sum-server.100xdevs.com/sum?a= " + x + "&b=" + y
+        );
+        const data = await res.text();
+        console.log(data);
+        document.getElementById("para").innerHTML = data;
       }
     </script>
     <!-- <form> -->
-    <input type="number" id="o" />
-    <input type="number" id="t" />
-    <button onclick="getdata()">Get data</button>
-    <!-- </form> -->
+    <input oninput="getdata()" type="number" id="o" />
+    <input oninput="getdata()" type="number" id="t" />
 
-    <!-- <button onclick="getdata()">Get data</button> -->
     <p id="para"></p>
-    <!-- <div id="data2"></div> -->
+
   </body>
 </html>
