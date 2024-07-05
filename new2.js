@@ -12,3 +12,4 @@ let obj2 = {
 let neww = printit.bind(obj2, ["India"]);
 // console.log(neww);
 neww();
+ 
